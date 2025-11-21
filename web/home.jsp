@@ -9,8 +9,6 @@
     <title>Trang Chủ - Phụ Kiện Store</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <style>
-    /* ====== TOÀN TRANG ====== */
-    /* ====== TOÀN TRANG ====== */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;

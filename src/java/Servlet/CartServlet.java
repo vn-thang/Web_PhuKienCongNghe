@@ -73,7 +73,8 @@ public class CartServlet extends HttpServlet {
                             }
                         }
                     }
-
+                    session.setAttribute("toastMessage", "Thêm sản phẩm vào giỏ hàng thành công!");
+                    session.setAttribute("toastType", "success");
                     // Giữ nguyên trang đang ở
                     String refererAdd = request.getHeader("Referer");
                     session.setAttribute("cart", cart);

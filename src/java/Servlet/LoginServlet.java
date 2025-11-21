@@ -37,6 +37,9 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("acc", account);
 
+            
+            session.setAttribute("toastMessage", "Đăng nhập thành công! Chào mừng " + account.getHoTen());
+             session.setAttribute("toastType", "success"); // Màu xanh
             // --- LOGIC MỚI: TẢI GIỎ HÀNG TỪ DATABASE ---
             CartDAO cartDAO = new CartDAO();
             Cart cart = cartDAO.getCartByUserId(account.getMaNguoiDung());

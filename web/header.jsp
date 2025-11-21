@@ -309,6 +309,40 @@ a { color: var(--text-dark); text-decoration: none; }
   </div>
 </nav>
 
+        <c:if test="${not empty sessionScope.toastMessage}">
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 2000;">
+        <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <%-- Header của thông báo (Màu xanh nếu success, Đỏ nếu error) --%>
+            <div class="toast-header ${sessionScope.toastType == 'success' ? 'bg-success text-white' : 'bg-danger text-white'}">
+                <i class="fa-solid ${sessionScope.toastType == 'success' ? 'fa-circle-check' : 'fa-circle-exclamation'} me-2"></i>
+                <strong class="me-auto">Thông báo</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <%-- Nội dung thông báo --%>
+            <div class="toast-body bg-white text-dark">
+                ${sessionScope.toastMessage}
+            </div>
+        </div>
+    </div>
+
+    <%-- Script tự động ẩn sau 3 giây --%>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toastEl = document.getElementById('liveToast');
+            if (toastEl) {
+                setTimeout(() => {
+                    const toast = new bootstrap.Toast(toastEl);
+                    toast.hide();
+                }, 3000); // 3000ms = 3 giây
+            }
+        });
+    </script>
+
+    <%-- Xóa session ngay để không hiện lại khi F5 --%>
+    <c:remove var="toastMessage" scope="session"/>
+    <c:remove var="toastType" scope="session"/>
+</c:if>
+        
 <!-- ========== CATEGORY BAR ========== -->
 <div class="category-bar">
   <div class="container">
